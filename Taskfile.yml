@@ -1,0 +1,23 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - go build -o serve .
+    sources:
+      - ./**/*.go
+    silent: true
+
+  run:
+    deps:
+      - build 
+    cmds:
+      - ./serve
+    silent: true
+
+  install:
+    cmds:
+      - go install github.com/kerma/serve
+    silent: true
